@@ -90,6 +90,7 @@ import styles from './App.css';
             render();
         },
         loadFavorites : () => {
+            // load the favorites from localStorage and put them in the favorites model
             favoritesModel.setItems( JSON.parse( localStorage.getItem( 'favorites' ) ) || Object.create( null ) );
         },
         render: function(){
@@ -98,7 +99,7 @@ import styles from './App.css';
             const TOTAL_FAVORITES = favoritesModel.getAll().length;
 
             // search results
-            let searchList = searchModel.getAll().map( function( item ){
+            let searchList = searchModel.getAll().map( item => {
                 const FOLLOWERS = item.followers + ( item.followers === 1 ? ' follower' : ' followers' );
                 return (
                     <div className={ styles.item } key={ item.id } onClick={() => this.addToFavorites( item ) }>
@@ -128,7 +129,7 @@ import styles from './App.css';
             );
 
             // favorites view
-            let favoritesList = favoritesModel.getAll().map( function( item ){
+            let favoritesList = favoritesModel.getAll().map( item => {
                 const FOLLOWERS = item.followers + ( item.followers === 1 ? ' follower' : ' followers' );
                 return (
                     <div className={ styles.item } key={ item.id } onClick={() => this.removeFromFavorites( item ) }>
