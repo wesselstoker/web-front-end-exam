@@ -46,6 +46,9 @@ import styles from './App.css';
                 query : null
             };
         },
+        // the reason why I am using a normal function instead of
+        // a arrow function(=>) is because I want to use the 'this'.
+        // the meaning of 'this' is different if you are using =>
         componentDidMount : function(){
             // make sure that there are results loaded after mounting
             this.search( this.state.query );
