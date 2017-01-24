@@ -94,7 +94,7 @@ import styles from './App.css';
         },
         loadFavorites : () => {
             // load the favorites from localStorage and put them in the favorites model
-            favoritesModel.setItems( JSON.parse( localStorage.getItem( 'favorites' ) ) || Object.create( null ) );
+            favoritesModel.setItems( JSON.parse( localStorage.getItem( 'favorites' ) ) || [] );
         },
         render: function(){
 
@@ -122,7 +122,6 @@ import styles from './App.css';
                         placeholder='Search and find your favorite artists'
                         onChange={ this.handleChange }
                         autoFocus
-                        onFocus={ this.moveCursor }
                     />
                     <div className={ styles.counter }>
                         { TOTAL_RESULTS === 1 ? TOTAL_RESULTS + ' result' : TOTAL_RESULTS + ' results' }
